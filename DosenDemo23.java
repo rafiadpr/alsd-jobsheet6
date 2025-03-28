@@ -14,7 +14,9 @@ public class DosenDemo23 {
             System.out.println("2. Tampilkan Data Dosen");
             System.out.println("3. Sorting ASC (Termuda ke Tertua)");
             System.out.println("4. Sorting DSC (Tertua ke Termuda)");
-            System.out.println("5. Keluar");
+            System.out.println("5. Cari Dosen Berdasarkan Nama (Sequential Search)");
+            System.out.println("6. Cari Dosen Berdasarkan Usia (Binary Search)");
+            System.out.println("7. Keluar");
             System.out.print("Pilih menu: ");
             pilihan = sc.nextInt();
             sc.nextLine();
@@ -50,11 +52,22 @@ public class DosenDemo23 {
                     listDosen.tampilInformasi();
                     break;
                 case 5:
+                    System.out.print("Masukkan Nama Dosen yang dicari: ");
+                    String cariNama = sc.nextLine();
+                    listDosen.PencarianDataSequential23(cariNama);
+                    break;
+                case 6:
+                    listDosen.sortingAscending();
+                    System.out.print("Masukkan Usia Dosen yang dicari: ");
+                    int cariUsia = sc.nextInt();
+                    listDosen.PencarianDataBinary23(cariUsia, 0, listDosen.idx - 1);
+                    break;
+                case 7:
                     System.out.println("Program selesai.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid!");
             }
-        } while (pilihan != 5);
+        } while (pilihan != 7);
     }
 }

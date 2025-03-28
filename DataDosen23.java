@@ -60,4 +60,40 @@ public class DataDosen23 {
             dataDosen[j] = temp;
         }
     }
+
+    void PencarianDataSequential23(String nama) {
+        boolean ketemu = false;
+        int jumlahHasil = 0;
+        for (int i = 0; i < idx; i++) {
+            if (dataDosen[i].nama.equalsIgnoreCase(nama)) {
+                ketemu = true;
+                jumlahHasil++;
+                
+            }
+        }
+        if (!ketemu) {
+            System.out.println("Dosen dengan nama " + nama + " tidak ditemukan.");
+        } else if (jumlahHasil > 1) {
+            System.out.println("Peringatan: Terdapat lebih dari satu dosen dengan nama " + nama);
+        }
+    }
+
+    int PencarianDataBinary23(double usia, int left, int right) {
+        sortingAscending();
+        int mid;
+        if (right >= left) {
+            mid = (left + right) / 2;
+            if (usia == dataDosen[mid].usia) {
+                System.out.println("Dosen dengan usia " + usia + " ditemukan:");
+                dataDosen[mid].tampil();
+                return mid;
+            } else if (dataDosen[mid].usia > usia) {
+                return PencarianDataBinary23(usia, left, mid - 1);
+            } else {
+                return PencarianDataBinary23(usia, mid + 1, right);
+            }
+        }
+        System.out.println("Dosen dengan usia " + usia + " tidak ditemukan.");
+        return -1;
+    }
 }
