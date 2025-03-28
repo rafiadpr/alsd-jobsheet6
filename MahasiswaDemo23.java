@@ -3,13 +3,14 @@ import java.util.Scanner;
 public class MahasiswaDemo23 {
         public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Masukkan jumlah mahasiswa: ");
-        int jumlah = sc.nextInt();
-        sc.nextLine();
+        // System.out.print("Masukkan jumlah mahasiswa: ");
+        // int jumlah = sc.nextInt();
+        // sc.nextLine();
+        int jumMhs = 5;
 
-        MahasiswaBerprestasi23 list = new MahasiswaBerprestasi23(jumlah);
+        MahasiswaBerprestasi23 list = new MahasiswaBerprestasi23();
 
-        for (int i = 0; i < jumlah; i++) {
+        for (int i = 0; i < jumMhs; i++) {
             System.out.println("Mahasiswa ke-" + (i + 1));
             System.out.print("NIM: ");
             String nim = sc.nextLine();
@@ -24,23 +25,19 @@ public class MahasiswaDemo23 {
             list.tambah(new Mahasiswa23(nim, nama, kelas, ipk));
         }
 
-        System.out.println("Data mahasiswa sebelum sorting : ");
         list.tampil();
+        System.out.println("--------------------");
+        System.out.println("Pencarian Data");
+        System.out.println("--------------------");
+        System.out.println("Masukkan IPK yang dicari: ");
+        System.out.print("IPK : ");
+        double cari = sc.nextDouble();
+        sc.nextLine();
 
-        // System.out.println("Data mahasiswa setelah sorting berdasarkan IPK (Ascending): ");
-        // list.bubbleSort();
-        // list.tampil();
-
-        // System.out.println("Data mahasiswa yang sudah urut menggunakan Selection Sort (Ascending): ");
-        // list.selectionSort();
-        // list.tampil();
-
-        // System.out.println("Data mahasiswa yang sudah urut menggunakan Insertion Sort (Ascending): ");
-        // list.insertionSort();
-        // list.tampil();
-
-        System.out.println("Data mahasiswa yang sudah urut menggunakan Insertion Sort (Descending): ");
-        list.insertionSortDescending();
-        list.tampil();
+        System.out.println("Pencarian menggunakan Sequential Searching");
+        double posisi = list.sequentialSearching(cari);
+        int pss = (int) posisi;
+        list.tampilPosisi(cari, pss);
+        list.tampilDataSearch(cari, pss);
     }
 }
