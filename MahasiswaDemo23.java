@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class MahasiswaDemo23 {
         public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // System.out.print("Masukkan jumlah mahasiswa: ");
-        // int jumlah = sc.nextInt();
-        // sc.nextLine();
-        int jumMhs = 5;
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jumMhs = sc.nextInt();
+        sc.nextLine();
+        // int jumMhs = 5;
 
-        MahasiswaBerprestasi23 list = new MahasiswaBerprestasi23();
+        MahasiswaBerprestasi23 list = new MahasiswaBerprestasi23(jumMhs);
 
         for (int i = 0; i < jumMhs; i++) {
             System.out.println("Mahasiswa ke-" + (i + 1));
@@ -34,10 +34,16 @@ public class MahasiswaDemo23 {
         double cari = sc.nextDouble();
         sc.nextLine();
 
-        System.out.println("Pencarian menggunakan Sequential Searching");
-        double posisi = list.sequentialSearching(cari);
-        int pss = (int) posisi;
-        list.tampilPosisi(cari, pss);
-        list.tampilDataSearch(cari, pss);
+        // System.out.println("Pencarian menggunakan Sequential Searching");
+        // double posisi = list.sequentialSearching(cari);
+        // int pss = (int) posisi;
+        // list.tampilPosisi(cari, pss);
+        // list.tampilDataSearch(cari, pss);
+
+        System.out.println("Pencarian menggunakan Binary Searching");
+        double posisi2 = list.findBinarySearch(cari, 0, jumMhs - 1);
+        int pss2 = (int) posisi2;
+        list.tampilPosisi(cari, pss2);
+        list.tampilDataSearch(cari, pss2);
     }
 }
